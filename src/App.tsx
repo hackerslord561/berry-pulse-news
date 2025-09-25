@@ -45,7 +45,7 @@ export default function App() {
             category: 'Politics',
             readTime: '5 min read',
             timestamp: '2 hours ago',
-            author: 'Sarah Johnson',
+            author: 'Hackerslord',
             featured: true
         },
         {
