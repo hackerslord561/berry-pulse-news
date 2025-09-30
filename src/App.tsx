@@ -13,10 +13,11 @@ import {
     Clock,
     Play,
     ChevronRight,
-    Star,
     MessageSquare,
     Share2,
-    Bookmark
+    Bookmark,
+    Moon,
+    Sun
 } from 'lucide-react'
 
 interface NewsArticle {
@@ -30,10 +31,87 @@ interface NewsArticle {
     featured?: boolean
 }
 
+interface ThemeToggleProps {
+    isDarkMode: boolean
+    onToggle: () => void
+}
+
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, onToggle }) => {
+    return (
+        <Button
+            variant="ghost"
+            size="icon"
+            onClick={onToggle}
+            className="transition-colors hover:bg-accent"
+            aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+            {isDarkMode ? (
+                <Sun className="h-5 w-5 transition-transform hover:rotate-180" />
+            ) : (
+                <Moon className="h-5 w-5 transition-transform hover:rotate-12" />
+            )}
+        </Button>
+    )
+}
+
 export default function App() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState('Latest')
     const [searchQuery, setSearchQuery] = useState('')
+    const [isDarkMode, setIsDarkMode] = useState(false)
+
+    useEffect(() => {
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+        const shouldUseDark = savedTheme === 'dark' || (!savedTheme && mediaQuery.matches)
+
+        setIsDarkMode(shouldUseDark)
+
+        if (shouldUseDark) {
+            document.documentElement.classList.add('dark')
+            document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+            document.documentElement.setAttribute('data-theme', 'light')
+        }
+
+        // Listen for system theme changes
+        const handleChange = (e: MediaQueryListEvent) => {
+            if (!localStorage.getItem('theme')) {
+                const shouldUseDark = e.matches
+                setIsDarkMode(shouldUseDark)
+
+                if (shouldUseDark) {
+                    document.documentElement.classList.add('dark')
+                    document.documentElement.setAttribute('data-theme', 'dark')
+                } else {
+                    document.documentElement.classList.remove('dark')
+                    document.documentElement.setAttribute('data-theme', 'light')
+                }
+            }
+        }
+
+        mediaQuery.addEventListener('change', handleChange)
+
+        return () => mediaQuery.removeEventListener('change', handleChange)
+    }, [])
+
+    const toggleDarkMode = (): void => {
+        const newDarkMode = !isDarkMode
+        setIsDarkMode(newDarkMode)
+
+        if (newDarkMode) {
+            document.documentElement.classList.add('dark')
+            document.documentElement.setAttribute('data-theme', 'dark')
+            localStorage.setItem('theme', 'dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+            document.documentElement.setAttribute('data-theme', 'light')
+            localStorage.setItem('theme', 'light')
+        }
+    }
 
     const categories = ['Latest', 'Politics', 'Business', 'Technology', 'Sports', 'Entertainment', 'Health', 'Science']
 
@@ -45,7 +123,7 @@ export default function App() {
             category: 'Politics',
             readTime: '5 min read',
             timestamp: '2 hours ago',
-            author: 'Hackerslord',
+            author: 'Sarah Johnson',
             featured: true
         },
         {
@@ -113,7 +191,6 @@ export default function App() {
     )
 
     const featuredArticle = newsArticles.find(article => article.featured)
-    const regularArticles = newsArticles.filter(article => !article.featured)
 
     return (
         <div className="min-h-screen bg-background">
@@ -171,6 +248,7 @@ export default function App() {
                                     />
                                 </div>
                             </div>
+                            <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleDarkMode} />
                             <Button variant="ghost" size="icon">
                                 <Bell className="h-5 w-5" />
                             </Button>
@@ -319,7 +397,7 @@ export default function App() {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {filteredArticles.slice(0, 6).map((article, index) => (
+                                {filteredArticles.slice(0, 6).map((article) => (
                                     <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
                                         <div className="relative">
                                             <img
