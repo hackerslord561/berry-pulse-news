@@ -582,7 +582,7 @@ export default function App() {
 
                     <div className="border-t border-border mt-8 pt-8 text-center">
                         <p className="text-sm text-muted-foreground">
-                            © 2024 Berry Pulse Media Inc. All rights reserved.
+                            © 2025 Berry Pulse Media Inc. All rights reserved.
                         </p>
                     </div>
                 </div>
