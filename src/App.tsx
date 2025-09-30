@@ -36,6 +36,10 @@ interface ThemeToggleProps {
     onToggle: () => void
 }
 
+interface PageProps {
+    onBack: () => void
+}
+
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, onToggle }) => {
     return (
         <Button
@@ -54,11 +58,242 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, onToggle }) => {
     )
 }
 
+const OurStoryPage: React.FC<PageProps> = ({ onBack }) => {
+    return (
+        <main className="container mx-auto px-4 py-8">
+            <div className="max-w-4xl mx-auto">
+                <Button variant="outline" onClick={onBack} className="mb-6">
+                    ← Back to Home
+                </Button>
+                <div className="space-y-8">
+                    <div>
+                        <h1 className="text-4xl font-bold text-foreground mb-4">Our Story</h1>
+                        <p className="text-xl text-muted-foreground">The journey of Berry Pulse Media Inc.</p>
+                    </div>
+
+                    <Card>
+                        <CardContent className="p-8">
+                            <div className="space-y-6">
+                                <div>
+                                    <h2 className="text-2xl font-semibold mb-4">Founded on Trust</h2>
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        Berry Pulse Media Inc. was founded in 2020 with a simple mission: to deliver accurate,
+                                        unbiased news to people around the world. Our founders recognized the need for a media
+                                        company that prioritizes truth and transparency above all else.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        We believe that informed citizens make better decisions. That's why we're committed
+                                        to providing comprehensive coverage of global events, from breaking news to in-depth
+                                        analysis, ensuring our readers have the information they need to understand our world.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h2 className="text-2xl font-semibold mb-4">Our Values</h2>
+                                    <ul className="space-y-2 text-muted-foreground">
+                                        <li>• Accuracy and fact-checking in every story</li>
+                                        <li>• Transparency in our reporting process</li>
+                                        <li>• Diversity in perspectives and voices</li>
+                                        <li>• Innovation in digital journalism</li>
+                                        <li>• Commitment to serving the public interest</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </main>
+    )
+}
+
+const EditorialStandardsPage: React.FC<PageProps> = ({ onBack }) => {
+    return (
+        <main className="container mx-auto px-4 py-8">
+            <div className="max-w-4xl mx-auto">
+                <Button variant="outline" onClick={onBack} className="mb-6">
+                    ← Back to Home
+                </Button>
+                <div className="space-y-8">
+                    <div>
+                        <h1 className="text-4xl font-bold text-foreground mb-4">Editorial Standards</h1>
+                        <p className="text-xl text-muted-foreground">Our commitment to journalistic excellence</p>
+                    </div>
+
+                    <Card>
+                        <CardContent className="p-8">
+                            <div className="space-y-6">
+                                <div>
+                                    <h2 className="text-2xl font-semibold mb-4">Accuracy First</h2>
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        Every story published by Berry Pulse undergoes rigorous fact-checking. We verify
+                                        sources, cross-reference information, and ensure accuracy before publication.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h2 className="text-2xl font-semibold mb-4">Source Protection</h2>
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        We protect the confidentiality of our sources and maintain the highest standards
+                                        of journalistic integrity in all our reporting.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h2 className="text-2xl font-semibold mb-4">Correction Policy</h2>
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        When errors occur, we correct them promptly and transparently. All corrections
+                                        are clearly marked and explained to our readers.
+                                    </p>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </main>
+    )
+}
+
+const CareersPage: React.FC<PageProps> = ({ onBack }) => {
+    return (
+        <main className="container mx-auto px-4 py-8">
+            <div className="max-w-4xl mx-auto">
+                <Button variant="outline" onClick={onBack} className="mb-6">
+                    ← Back to Home
+                </Button>
+                <div className="space-y-8">
+                    <div>
+                        <h1 className="text-4xl font-bold text-foreground mb-4">Careers</h1>
+                        <p className="text-xl text-muted-foreground">Join our team of dedicated journalists</p>
+                    </div>
+
+                    <Card>
+                        <CardContent className="p-8">
+                            <div className="space-y-6">
+                                <div>
+                                    <h2 className="text-2xl font-semibold mb-4">Why Work With Us?</h2>
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        At Berry Pulse Media, we foster a culture of innovation, integrity, and continuous
+                                        learning. Our team is passionate about making a difference through quality journalism.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h2 className="text-2xl font-semibold mb-4">Current Openings</h2>
+                                    <div className="space-y-4">
+                                        <div className="border border-border p-4 rounded-lg">
+                                            <h3 className="font-semibold">Senior Reporter - Technology</h3>
+                                            <p className="text-sm text-muted-foreground">Full-time • Remote</p>
+                                        </div>
+                                        <div className="border border-border p-4 rounded-lg">
+                                            <h3 className="font-semibold">Digital Content Editor</h3>
+                                            <p className="text-sm text-muted-foreground">Full-time • New York</p>
+                                        </div>
+                                        <div className="border border-border p-4 rounded-lg">
+                                            <h3 className="font-semibold">Investigative Journalist</h3>
+                                            <p className="text-sm text-muted-foreground">Full-time • Remote</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </main>
+    )
+}
+
+const ContactUsPage: React.FC<PageProps> = ({ onBack }) => {
+    return (
+        <main className="container mx-auto px-4 py-8">
+            <div className="max-w-4xl mx-auto">
+                <Button variant="outline" onClick={onBack} className="mb-6">
+                    ← Back to Home
+                </Button>
+                <div className="space-y-8">
+                    <div>
+                        <h1 className="text-4xl font-bold text-foreground mb-4">Contact Us</h1>
+                        <p className="text-xl text-muted-foreground">Get in touch with our team</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Send us a Message</CardTitle>
+                                <CardDescription>We'd love to hear from you</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="space-y-4">
+                                    <Input placeholder="Your Name" />
+                                    <Input type="email" placeholder="Your Email" />
+                                    <Input placeholder="Subject" />
+                                    <textarea
+                                        className="w-full p-3 border border-input rounded-md bg-background text-foreground"
+                                        rows={5}
+                                        placeholder="Your Message"
+                                    ></textarea>
+                                    <Button className="w-full">Send Message</Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Contact Information</CardTitle>
+                                <CardDescription>Reach us directly</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="space-y-4">
+                                    <div>
+                                        <h4 className="font-semibold">Newsroom</h4>
+                                        <p className="text-sm text-muted-foreground">news@berrypulse.com</p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold">General Inquiries</h4>
+                                        <p className="text-sm text-muted-foreground">info@berrypulse.com</p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold">Press Relations</h4>
+                                        <p className="text-sm text-muted-foreground">press@berrypulse.com</p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold">Address</h4>
+                                        <p className="text-sm text-muted-foreground">
+                                            123 Media Avenue<br />
+                                            New York, NY 10001<br />
+                                            United States
+                                        </p>
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </div>
+            </div>
+        </main>
+    )
+}
+
 export default function App() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState('Latest')
     const [searchQuery, setSearchQuery] = useState('')
     const [isDarkMode, setIsDarkMode] = useState(false)
+    const [currentPage, setCurrentPage] = useState('home')
+
+    const navigateToPage = (page: string) => {
+        setCurrentPage(page)
+    }
+
+    const navigateBack = () => {
+        setCurrentPage('home')
+    }
 
     useEffect(() => {
         // Check for saved theme preference or default to system preference
@@ -191,6 +426,131 @@ export default function App() {
     )
 
     const featuredArticle = newsArticles.find(article => article.featured)
+
+    // Render different pages based on currentPage state
+    if (currentPage === 'our-story') {
+        return (
+            <div className="min-h-screen bg-background">
+                <header className="sticky top-0 z-50 bg-background border-b border-border">
+                    <div className="container mx-auto px-4">
+                        <div className="flex items-center justify-between h-16">
+                            <div className="flex items-center space-x-2">
+                                <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
+                                    <span className="text-primary-foreground font-bold text-sm">BP</span>
+                                </div>
+                                <div>
+                                    <h1 className="font-bold text-xl text-foreground">Berry Pulse</h1>
+                                    <p className="text-xs text-muted-foreground -mt-1">Media Inc.</p>
+                                </div>
+                            </div>
+                            <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleDarkMode} />
+                        </div>
+                    </div>
+                </header>
+                <OurStoryPage onBack={navigateBack} />
+                <footer className="bg-muted mt-16">
+                    <div className="container mx-auto px-4 py-8 text-center">
+                        <p className="text-sm text-muted-foreground">
+                            © 2024 Berry Pulse Media Inc. All rights reserved.
+                        </p>
+                    </div>
+                </footer>
+            </div>
+        )
+    }
+
+    if (currentPage === 'editorial-standards') {
+        return (
+            <div className="min-h-screen bg-background">
+                <header className="sticky top-0 z-50 bg-background border-b border-border">
+                    <div className="container mx-auto px-4">
+                        <div className="flex items-center justify-between h-16">
+                            <div className="flex items-center space-x-2">
+                                <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
+                                    <span className="text-primary-foreground font-bold text-sm">BP</span>
+                                </div>
+                                <div>
+                                    <h1 className="font-bold text-xl text-foreground">Berry Pulse</h1>
+                                    <p className="text-xs text-muted-foreground -mt-1">Media Inc.</p>
+                                </div>
+                            </div>
+                            <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleDarkMode} />
+                        </div>
+                    </div>
+                </header>
+                <EditorialStandardsPage onBack={navigateBack} />
+                <footer className="bg-muted mt-16">
+                    <div className="container mx-auto px-4 py-8 text-center">
+                        <p className="text-sm text-muted-foreground">
+                            © 2024 Berry Pulse Media Inc. All rights reserved.
+                        </p>
+                    </div>
+                </footer>
+            </div>
+        )
+    }
+
+    if (currentPage === 'careers') {
+        return (
+            <div className="min-h-screen bg-background">
+                <header className="sticky top-0 z-50 bg-background border-b border-border">
+                    <div className="container mx-auto px-4">
+                        <div className="flex items-center justify-between h-16">
+                            <div className="flex items-center space-x-2">
+                                <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
+                                    <span className="text-primary-foreground font-bold text-sm">BP</span>
+                                </div>
+                                <div>
+                                    <h1 className="font-bold text-xl text-foreground">Berry Pulse</h1>
+                                    <p className="text-xs text-muted-foreground -mt-1">Media Inc.</p>
+                                </div>
+                            </div>
+                            <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleDarkMode} />
+                        </div>
+                    </div>
+                </header>
+                <CareersPage onBack={navigateBack} />
+                <footer className="bg-muted mt-16">
+                    <div className="container mx-auto px-4 py-8 text-center">
+                        <p className="text-sm text-muted-foreground">
+                            © 2024 Berry Pulse Media Inc. All rights reserved.
+                        </p>
+                    </div>
+                </footer>
+            </div>
+        )
+    }
+
+    if (currentPage === 'contact-us') {
+        return (
+            <div className="min-h-screen bg-background">
+                <header className="sticky top-0 z-50 bg-background border-b border-border">
+                    <div className="container mx-auto px-4">
+                        <div className="flex items-center justify-between h-16">
+                            <div className="flex items-center space-x-2">
+                                <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
+                                    <span className="text-primary-foreground font-bold text-sm">BP</span>
+                                </div>
+                                <div>
+                                    <h1 className="font-bold text-xl text-foreground">Berry Pulse</h1>
+                                    <p className="text-xs text-muted-foreground -mt-1">Media Inc.</p>
+                                </div>
+                            </div>
+                            <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleDarkMode} />
+                        </div>
+                    </div>
+                </header>
+                <ContactUsPage onBack={navigateBack} />
+                <footer className="bg-muted mt-16">
+                    <div className="container mx-auto px-4 py-8 text-center">
+                        <p className="text-sm text-muted-foreground">
+                            © 2024 Berry Pulse Media Inc. All rights reserved.
+                        </p>
+                    </div>
+                </footer>
+            </div>
+        )
+    }
 
     return (
         <div className="min-h-screen bg-background">
@@ -562,10 +922,10 @@ export default function App() {
                         <div>
                             <h4 className="font-semibold mb-4">About</h4>
                             <div className="space-y-2 text-sm text-muted-foreground">
-                                <p><a href="#" className="hover:text-primary transition-colors">Our Story</a></p>
-                                <p><a href="#" className="hover:text-primary transition-colors">Editorial Standards</a></p>
-                                <p><a href="#" className="hover:text-primary transition-colors">Careers</a></p>
-                                <p><a href="#" className="hover:text-primary transition-colors">Contact Us</a></p>
+                                <p><button onClick={() => navigateToPage('our-story')} className="hover:text-primary transition-colors">Our Story</button></p>
+                                <p><button onClick={() => navigateToPage('editorial-standards')} className="hover:text-primary transition-colors">Editorial Standards</button></p>
+                                <p><button onClick={() => navigateToPage('careers')} className="hover:text-primary transition-colors">Careers</button></p>
+                                <p><button onClick={() => navigateToPage('contact-us')} className="hover:text-primary transition-colors">Contact Us</button></p>
                             </div>
                         </div>
 
@@ -582,7 +942,7 @@ export default function App() {
 
                     <div className="border-t border-border mt-8 pt-8 text-center">
                         <p className="text-sm text-muted-foreground">
-                            © 2025 Berry Pulse Media Inc. All rights reserved.
+                            © 2024 Berry Pulse Media Inc. All rights reserved.
                         </p>
                     </div>
                 </div>
